@@ -36,7 +36,13 @@ mup.stream("/2/rsvps", stream => {
           return 0
         }
       })
-      console.log(topicsCounter)
+      const topTen = arrayOfTopics.slice(0,10).map((topic) => {
+        return {
+          topic: topic,
+          count: topicsCounter[topic]
+        }
+      })
+      console.log(topTen)
 
     }).on("error", e => {
        console.log("error! " + e)
