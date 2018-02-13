@@ -15,6 +15,9 @@ mup.stream("/2/rsvps", stream => {
   stream
     .on("data", item => {
       const topicNames = item.group.group_topics.map(topic => topic.topic_name)
+      if (topicNames.indexOf('Web Development') < 0) {
+        return
+      }
       topicNames.forEach(name => {
         if (topicsCounter[name]) {
           topicsCounter[name]++
