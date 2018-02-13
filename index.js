@@ -46,6 +46,14 @@ io.on('connection', socket => {
           }
         })
         console.log(topTen)
+        io.emit("action", {
+          type: 'ADD_RSVP',
+          payload: item
+        })
+        io.emit("action", {
+          type: "UPDATE_TOPICS",
+          payload: topTen
+        })
 
       }).on("error", e => {
          console.log("error! " + e)
